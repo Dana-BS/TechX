@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="headerFooter.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex: 1;
+    }
+
+    .sidebar {
+        
+        background-color: #8fb8c4;
+        width: 30%;
+        padding: 0; 
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border-right: 0.0625em solid #aeadad; /* 1px */
+    }
+
+    .sidebar .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        padding: 0.625em; /* 10px */
+        background-color: #8fb8c4;
+        border: 0.0625em solid #000; /* 1px */
+        border-left: none; 
+        border-right: none; 
+        border-top: none; 
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar .user-info img {
+        border-radius: 50%;
+        width: 3.125em; /* 50px */
+        height: 3.125em; /* 50px */
+        margin-right: 0.9375em; /* 15px */
+    }
+
+    #account {
+        font-weight: bold;
+        line-height: 0%; /* Keep this unchanged */
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: black;
+        padding: 1.25em; /* 20px */
+        margin: 0;
+        display: block;
+        background-color: #8fb8c4;
+        border: 0.0625em solid #000; /* 1px */
+        border-left: none; 
+        border-right: none; 
+        border-top: none;
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar a:last-child {
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .main-content {
+        width: 80%;
+        padding: 1.25em; /* 20px */
+        box-sizing: border-box;
+    }
+
+    h2, h3 {
+        text-align: left;
+        margin: 0.3125em; /* 5px */
+        padding: 0.3125em 1.875em; /* 5px 30px */
+    }
+
+    .product-wrapper {
+        display: flex;
+        overflow-x: auto; 
+        gap: 1.25em; /* 20px */
+        padding: 0.625em; /* 10px */
+        margin-bottom: 1.875em; /* 30px */
+        scrollbar-width: thin; 
+    }
+    
+    .product-wrapper::-webkit-scrollbar {
+        height: 0.5em; /* 8px */
+    }
+
+    .product-wrapper::-webkit-scrollbar-thumb {
+        background-color: #aeadad; 
+        border-radius: 0.625em; /* 10px */
+    }
+
+    .product-card {
+        flex: 0 0 auto; 
+        width: 18.75em; /* 300px */
+        height: 31.25em; /* 500px */
+        padding: 0.9375em; /* 15px */
+        text-align: center;
+        background-color: white;
+        border: 0.0625em solid #aeadad; /* 1px */
+        box-sizing: border-box;
+        border-radius: 0.625em; /* 10px */
+    }
+
+    .product-card img {
+        width: 12.5em; /* 200px */
+        height: 12.5em; /* 200px */
+        margin-bottom: 0.625em; /* 10px */
+        border-radius: 0.625em; /* 10px */
+    }
+
+    .product-card p {
+        font-weight: bold;
+        margin: 0.625em 0; /* 10px */
+        text-align: center;
+    }
+
+    .product-card .label, .pname {
+        margin: 0.625em 0; /* 10px */
+        width: 15.625em; /* 250px */
+        text-align: center;
+        align-items: center;
+        padding: 0.3125em 0.625em; /* 5px 10px */
+        font-weight: normal;
+        background-color: rgb(237, 234, 234);
+        border: 0.0625em solid black; /* 1px */
+        border-radius: 0.3125em; /* 5px */
+    }
+
+    
+    button.delete {
+        width: 5em; /* 80px */
+        height: 1.875em; /* 30px */
+        border-radius: 0.1875em; /* 3px */
+        background-color: rgb(245, 9, 9);
+    }
+    button.edit {
+        width: 5em; /* 80px */
+        height: 1.875em; /* 30px */
+        border-radius: 0.1875em; /* 3px */
+        background-color: rgb(68, 149, 68)
+    }
+
+    .price-stock-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 0.625em; /* 10px */
+    }
+
+    .price-wrapper {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.625em; /* 10px */
+    }
+
+    .price {
+        display: flex;
+        width: 50%;
+        align-items: center;
+        width: fit-content;
+        padding: 0.3125em 0.625em; /* 5px 10px */
+        border-radius: 0.3125em; /* 5px */
+        margin-left: 0.625em; /* 10px */
+    }
+
+    .price-input, .stock-input {
+        display: inline-block;
+        padding: 0.3125em; /* 5px */
+        border: 0.0625em solid #000; /* 1px */
+        border-radius: 0.3125em; /* 5px */
+        background-color: rgb(237, 234, 234);
+    }
+
+    .price-input {
+        width: fit-content;
+        text-align: right;
+        margin-right: 0.3125em; /* 5px */
+    }
+
+    .currency {
+        margin-left: 0.3125em; /* 5px */
+    }
+
+    .stock-wrapper .stock-input {
+        width: 2.5em; /* 40px */
+        margin-left: 0.625em; /* 10px */
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+    
+    <header>
+        <div class="header" >
+        
+            <div class="logo" >
+                <img src="images/TechX-2.png" alt="website logo" style="width:500px; ">
+            </div>
+           <div id='nav-bar'>
+        <a href="mobiles.html">
+            <img src="images/iphoneicon.png" alt="Mobiles " width="20" height="20"> Mobiles
+        </a>
+        <a href="laptops.html">
+            <img src="images/laptopicon.png" alt="Laptops" width="20" height="20"> Laptops
+        </a>
+        <a href="GamingAccessories.html">
+            <img src="images/keyboardicon.png" alt="Gaming Accessories " width="20" height="20"> Gaming Accessories
+        </a>
+        <a href="userPage.html">
+            <img src="images/user.png" alt="User Page " width="20" height="20"> User Page
+        </a>
+        <a href="sellerdashboard.html">
+            <img src="images/dashboard.png" alt="Seller Dashboard" width="20" height="20"> Seller Dashboard
+        </a>
+        <a href="cart.html">
+            <img src="images/yourcart.png" alt="Cart" width="20" height="20"> Cart
+        </a>
+    </div>
+    
+        </div>
+    </header>
+    
+    
+    <div class="container">
+        <!-- Breadcrumb Section -->
+        <div class="breadcrumb">
+            <a href="home.html">Home</a> → <a href="sellerdashboard.html">Seller Dashboard</a> 
+        </div>
+
+   
+    <div class="content-wrapper">
+        <div class="sidebar">
+            <div class="user-info">
+                <img src="images/user.png" alt="Seller Profile">
+                <div>
+                    <p id="account">Seller account</p>
+                    <p>myaccount@gmail.com</p>
+                </div>
+            </div>
+            <a href="addnewproduct.html">Add New Product</a>
+            <a href="manageoffer.html">Manage Offer</a>
+        </div>
+
+        <div class="main-content">
+            <h2>Seller Dashboard</h2>
+            <h3> My product</h3>
+            
+            <div class="product-wrapper"></div>
+
+            <!-- Product cards -->
+             
+            
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div id="footer">
+      <div class="contact-info">
+        <p>Contact Info</p>
+        <div class="info">
+          <span class="icon"><img src="images/social-media.png" alt="social-media " width=30 height=30 > TechX_sa</span> 
+          <span class="icon"><img src="images/email.png" alt="email " width=30 height=30>TechX@gmail.com</span> 
+          <span class="icon"><img src="images/icon-phone.png" alt="phone" width=30 height=30>+966508706553</span> 
+        </div>
+      </div>
+    
+      <div class="copyright">
+        &copy; 2024 TechX. All rights reserved
+      </div>
+    </div>  
+    </footer> 
+</div>
+
+<script>
+    
+    document.addEventListener("DOMContentLoaded", () => {
+    const productWrapper = document.querySelector(".product-wrapper");
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+
+    productWrapper.innerHTML = ""; 
+
+    const categoryMap = {
+    "Category1": "Mobiles",
+    "Category2": "Laptops",
+    "Category3": "Gaming Accessories"
+};
+
+if (storedProducts.length > 0) {
+    storedProducts.forEach(product => {
+        const productCard = `
+            <div class="product-card">
+                <img src="${product.image || 'images/default-image.jpg'}" alt="${product.name}">
+                <p class="pname">${product.name}</p>
+                <p class="label">Category: ${categoryMap[product.category] || product.category}</p>
+                <div class="price-stock-section">
+                    <div class="price-wrapper">
+                        <span>Price</span>
+                        <div class="price">
+                            <div class="price-input">${product.price.toLocaleString()}</div>
+                            <div class="currency">$</div>
+                        </div>
+                    </div>
+                    <div class="stock-wrapper">
+                        <span>${product.stock > 0 ? "In Stock" : "Out of Stock"}</span>
+                        <div class="stock-input">${product.stock}</div>
+                    </div>
+                </div>
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </div>`;
+        productWrapper.innerHTML += productCard;
+    });
+} else {
+    productWrapper.innerHTML = "<p>No products available. Add products from the 'Add New Product' page.</p>";
+}
+
+
+});
+
+    </script>
+    
+
+</body>
+</html>

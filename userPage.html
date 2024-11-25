@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	 <link rel="stylesheet" href="headerFooter.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: white;
+    }
+
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 12.5em; /* 200px */
+    }
+
+    .breadcrumb {
+        margin: 1.25em 0; /* 20px */
+    }
+
+    .breadcrumb a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .breadcrumb span {
+        margin: 0 0.3125em; /* 5px */
+    }
+
+    .user-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 3.125em; /* 50px */
+    }
+
+    .box {
+        width: 30%;
+        height: 9.375em; /* 150px */
+        text-align: center;
+        border: 0.1875em dotted white; /* 3px */
+        padding: 1.25em; /* 20px */
+        background-color: #ADD8E6;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box img {
+        width: 5em; /* 80px */
+        height: 5em; /* 80px */
+        margin-bottom: 0.625em; /* 10px */
+    }
+
+    .box p {
+        margin-top: 0.625em; /* 10px */
+        font-size: 1.125em; /* 18px */
+        font-weight: bold;
+        color: #000;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header" >
+	
+        <div class="logo" >
+            <img src="images/TechX-2.png" alt="website logo" style="width:500px; ">
+        </div>
+       <div id='nav-bar'>
+    <a href="mobiles.html">
+        <img src="images/iphoneicon.png" alt="Mobiles " width="20" height="20"> Mobiles
+    </a>
+    <a href="laptops.html">
+        <img src="images/laptopicon.png" alt="Laptops " width="20" height="20"> Laptops
+    </a>
+    <a href="GamingAccessories.html">
+        <img src="images/keyboardicon.png" alt="Gaming Accessories " width="20" height="20"> Gaming Accessories
+    </a>
+    <a href="userPage.html">
+        <img src="images/user.png" alt="User Page " width="20" height="20"> User Page
+    </a>
+    <a href="sellerdashboard.html">
+        <img src="images/dashboard.png" alt="Seller Dashboard" width="20" height="20"> Seller Dashboard
+    </a>
+    <a href="cart.html">
+        <img src="images/yourcart.png" alt="Cart" width="20" height="20"> Cart
+    </a>
+</div>
+
+	</div>
+</header>
+
+<div class="container">
+ 
+    <div class="breadcrumb">
+        <a href="home.html">Home</a> → <a href="userPage.html">User Page</a>
+    </div>
+
+    <h1 style="text-align: center;">User Page</h1>
+
+    <div class="user-section">
+        <div class="box">
+           <a href="cart.html"> <img src="images/yourcart.png" alt="Cart "> </a>
+            <p>Cart</p>
+        </div>
+        <div class="box">
+           <a href="orders.html"> <img src="images/orders.png" alt="Orders "> </a>
+            <p>Orders</p>
+        </div>
+        <div class="box">
+            <a href="review.html"> <img src="images/evalution.png" alt="Evaluation "> </a>
+            <p>Product Evaluation</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div id="footer">
+        <div class="contact-info">
+            <p>Contact Info</p>
+            <div class="info">
+                <span class="icon"><img src="images/social-media.png" alt="social-media" width=30 height=30> TechX_sa</span>
+                <span class="icon"><img src="images/email.png" alt="email" width=30 height=30>TechX@gmail.com</span>
+                <span class="icon"><img src="images/icon-phone.png" alt="phone" width=30 height=30>+966508706553</span>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 TechX. All rights reserved
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

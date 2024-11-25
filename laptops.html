@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptops Page</title>
+    <link rel="stylesheet" href="headerFooter.css">
+    <link rel="stylesheet" href="Prouducts.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/TechX-2.png" alt="website logo" style="width:500px;">
+            </div>
+            <div id='nav-bar'>
+                <a href="mobiles.html"><img src="images/iphoneicon.png" alt="Mobiles" width="20" height="20"> Mobiles</a>
+                <a href="laptops.html"><img src="images/laptopicon.png" alt="Laptops" width="20" height="20"> Laptops</a>
+                <a href="GamingAccessories.html"><img src="images/keyboardicon.png" alt="Gaming Accessories" width="20" height="20"> Gaming Accessories</a>
+                <a href="userPage.html"><img src="images/user.png" alt="User Page" width="20" height="20"> User Page</a>
+                <a href="sellerdashboard.html"><img src="images/dashboard.png" alt="Seller Dashboard" width="20" height="20"> Seller Dashboard</a>
+                <a href="cart.html"><img src="images/yourcart.png" alt="Cart" width="20" height="20"> Cart</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="home.html">Home</a> → <a href="laptops.html">Laptops</a>
+        </div>
+
+        <div class="sort-section">
+            <label for="sort">Sort by:</label>
+            <select id="sort" name="sort" onchange="sortProducts()">
+                <optgroup label="Price:">
+                    <option value="High To Low">High To Low</option>
+                    <option value="Low To High">Low To High</option>
+                </optgroup>
+                <optgroup label="Rating:">
+                    <option value="Highest Rate">Highest Rate</option>
+                    <option value="Lowest Rate">Lowest Rate</option>
+                </optgroup>
+                <optgroup label="Name:">
+                    <option value="A-Z">A-Z</option>
+                    <option value="Z-A">Z-A</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="products" id="products-list">
+           
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer">
+            <div class="contact-info">
+                <p>Contact Info</p>
+                <div class="info">
+                    <span class="icon"><img src="images/social-media.png" alt="social-media" width="30" height="30"> TechX_sa</span>
+                    <span class="icon"><img src="images/email.png" alt="email" width="30" height="30">TechX@gmail.com</span>
+                    <span class="icon"><img src="images/icon-phone.png" alt="phone" width="30" height="30">+966508706553</span>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 TechX. All rights reserved
+            </div>
+        </div>  
+    </footer>
+
+    <script src="scripts/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="headerFooter.css">
+     
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .cart {
+        padding: 1.25em; /* 20px */
+    }
+
+    .cart h1 {
+        margin-bottom: 1.25em; /* 20px */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.25em; /* 20px */
+    }
+
+    table th, table td {
+        padding: 0.9375em; /* 15px */
+        text-align: left;
+        border: 0.0625em solid #ddd; /* 1px */
+    }
+
+    .item-details {
+        display: flex;
+        align-items: center;
+        gap: 0.9375em; /* 15px */
+    }
+
+    .item-details img {
+        width: 3.125em; /* 50px */
+        height: 3.125em; /* 50px */
+        background-color: #ddd;
+    }
+
+    .delete-btn {
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 0.3125em 0.625em; /* 5px 10px */
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        background-color: #cc0000;
+    }
+
+    .cart-summary {
+        text-align: right;
+        margin-bottom: 1.25em; /* 20px */
+    }
+
+    .cart-summary p {
+        margin-bottom: 0.625em; /* 10px */
+    }
+
+    .cart-summary span {
+        font-weight: bold;
+    }
+
+    .checkout-btn {
+        background-color: #73a1b2;
+        color: white;
+        padding: 0.625em 1.25em; /* 10px 20px */
+        border: none;
+        cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .empty-cart-btn {
+        background-color: #ff4d4d;
+        color: white;
+        padding: 0.625em 1.25em; /* 10px 20px */
+        border: none;
+        cursor: pointer;
+        margin-left: 1.25em; /* 20px */
+    }
+
+    .empty-cart-btn:hover {
+        background-color: #cc0000;
+    }
+
+    .contact-info a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+     
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/TechX-2.png" alt="website logo" style="width:500px; ">
+            </div>
+            <div id="nav-bar">
+                <a href="mobiles.html">
+                    <img src="images/iphoneicon.png" alt="Mobiles" width="20" height="20"> Mobiles
+                </a>
+                <a href="laptops.html">
+                    <img src="images/laptopicon.png" alt="Laptops" width="20" height="20"> Laptops
+                </a>
+                <a href="GamingAccessories.html">
+                    <img src="images/keyboardicon.png" alt="Gaming Accessories" width="20" height="20"> Gaming Accessories
+                </a>
+                <a href="userPage.html">
+                    <img src="images/user.png" alt="User Page" width="20" height="20"> User Page
+                </a>
+                <a href="sellerdashboard.html">
+                    <img src="images/dashboard.png" alt="Seller Dashboard" width="20" height="20"> Seller Dashboard
+                </a>
+                <a href="#">
+                    <img src="images/yourcart.png" alt="Cart" width="20" height="20"> Cart
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="breadcrumb" style="padding-left:50px;">
+                <a href="home.html">Home</a> → <a href="cart.html">Cart</a>
+            </div>
+        </div>
+        
+        <section class="cart">
+            <h1>Cart</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                   
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <p>Subtotal: <span id="subtotal">0$</span></p>
+                <p>VAT: <span>150$</span></p>
+                <p>Grand Total: <span id="grand-total">0$</span></p>
+                <button class="checkout-btn" onclick="checkout()">Checkout</button>
+                <button class="empty-cart-btn" onclick="clearCart()">Empty Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div id="footer">
+            <div class="contact-info">
+                <p>Contact Info</p>
+                <div class="info">
+                    <span class="icon"><img src="images/social-media.png" alt="social-media" width="30" height="30"> TechX_sa</span> 
+                    <span class="icon"><img src="images/email.png" alt="email" width="30" height="30"> TechX@gmail.com</span> 
+                    <span class="icon"><img src="images/icon-phone.png" alt="phone" width="30" height="30"> +966508706553</span> 
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 TechX. All rights reserved
+            </div>
+        </div>  
+    </footer> 
+
+    <script src="scripts/cart.js"></script>
+</body>
+</html>
