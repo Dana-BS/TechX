@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard-add new product</title>
+    <link rel="stylesheet" href="headerFooter.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 1.25em 0; /* 20px */
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    main {
+        display: flex;
+        padding: 0;
+    }
+
+    .sidebar {
+        background-color: #8fb8c4;
+        width: 25%;
+        padding: 0; 
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border-right: 0.0625em solid #aeadad; /* 1px */
+    }
+
+    .sidebar .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0; 
+        padding: 0.625em; /* 10px */
+        background-color: #8fb8c4;
+        border: 0.0625em solid #000; 
+        border-left: none; 
+        border-right: none; 
+        border-top: none; 
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar .user-info img {
+        border-radius: 50%;
+        width: 3.125em; /* 50px */
+        height: 3.125em; /* 50px */
+        margin-right: 0.9375em; /* 15px */
+    }
+
+    #account {
+        font-weight: bold;
+        line-height: 0%;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: black;
+        padding: 1.25em; /* 20px */
+        margin: 0; 
+        display: block;
+        background-color: #8fb8c4;
+        border: 0.0625em solid #000; 
+        border-left: none; 
+        border-right: none; 
+        border-top: none; 
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar a:last-child {
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar a.active { 
+        background-color: #809ea7;
+        font-weight: bold;
+    }
+
+    .add-product-form {
+        width: 80%;
+        margin: 3.125em; /* 50px */
+        background-color: #fff;
+        padding: 1.25em; /* 20px */
+        box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1); /* 10px */
+    }
+
+    .add-product-form label {
+        font-weight: bold;
+    }
+
+    .add-product-form input, 
+    .add-product-form select, 
+    .add-product-form textarea {
+        width: 30%;
+        padding: 0.625em; /* 10px */
+        margin-bottom: 1.25em; /* 20px */
+        border: 0.0625em solid #ccc; /* 1px */
+        background-color: rgb(236, 236, 236);
+        border-radius: 0.3125em; /* 5px */
+    }
+
+    #price, #quantity {
+        width: 3.5em; /* 30px */
+    }
+
+    #description {
+        display: block;
+    }
+
+    #product-image {
+        display: block;
+        width: fit-content;
+    }
+
+    .imgupload {
+        display: block;
+        border: 0.0625em solid #000; /* 1px */
+        width: 50%;
+        padding: 0.625em; /* 10px */
+        margin-bottom: 0.625em; /* 10px */
+    }
+
+    .add-product-form button {
+        padding: 0.625em 1.25em; /* 10px 20px */
+        background-color: #4CAF50;
+        color: white;
+        font-size: 0.9375em; /* 15px */
+        font-weight: bold;
+        border: none;
+        border-radius: 0.3125em; /* 5px */
+        cursor: pointer;
+        float: right;
+        width: 9.375em; /* 150px */
+        height: 3.125em; /* 50px */
+    }
+
+    .add-product-form button:hover {
+        background-color: #45a049;
+    }
+</style>
+    
+</head>
+
+<body>
+
+    <header>
+        <div class="header" >
+        
+            <div class="logo" >
+                <img src="images/TechX-2.png" alt="website logo" style="width:500px; ">
+            </div>
+           <div id='nav-bar'>
+        <a href="mobiles.html">
+            <img src="images/iphoneicon.png" alt="Mobiles " width="20" height="20"> Mobiles
+        </a>
+        <a href="laptops.html">
+            <img src="images/laptopicon.png"  alt="Laptops " width="20" height="20"> Laptops
+        </a>
+        <a href="GamingAccessories.html">
+            <img src="images/keyboardicon.png" alt="Gaming Accessories " width="20" height="20"> Gaming Accessories
+        </a>
+        <a href="userPage.html">
+            <img src="images/user.png" alt="User Page " width="20" height="20"> User Page
+        </a>
+        <a href="sellerdashboard.html">
+            <img src="images/dashboard.png" alt="Seller Dashboard" width="20" height="20"> Seller Dashboard
+        </a>
+        <a href="cart.html">
+            <img src="images/yourcart.png" alt="Cart" width="20" height="20"> Cart
+        </a>
+    </div>
+    
+        </div>
+    </header>
+    
+    
+    <div class="container">
+        
+        <div class="breadcrumb">
+            <a href="home.html">Home</a> → <a href="sellerdashboard.html">Seller Dashboard</a>  → <a href="addnewproduct.html">Add new product</a> 
+        </div>
+
+  
+    
+        <main>
+            <div class="sidebar">
+                <div class="user-info">
+                    <img src="images/user.png" alt="Seller Profile">
+                    <div>
+                        <p id="account">Seller account</p>
+                        <p>myaccount@gmail.com</p>
+                    </div>
+                </div>
+                <a href="addnewproduct.html" class="active">Add New Product</a>
+                <a href="manageoffer.html">Manage Offer</a>
+            </div>
+
+            <div class="add-product-form">
+                
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    
+                    <fieldset>
+                        <legend>Add New Product</legend>
+                        <div>
+                             <label for="product-name">Product name:</label>
+                             <input type="text" id="product-name" name="product-name" placeholder="Enter product name..." >
+                        </div>
+
+                        <div>
+                            <label for="category">Category:</label>
+                            <select id="category" name="category">
+                                <option value="Category1">Mobiles</option>
+                                <option value="Category2">Laptops</option>
+                                <option value="Category3"> Gaming Accessories</option>
+                            </select>
+                        </div>       
+                        
+                    <div>
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" name="price" placeholder="00" min="0"   >
+                    </div>
+
+                    <div>
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" placeholder="00" min="0" >
+                    </div>
+
+                    
+                         <label for="description">Description:</label>
+                         <textarea id="description" name="description" placeholder="Enter description..." rows="4" ></textarea>
+                    
+                    
+                    <div class="imgupload">
+                        <label for="product-image">Product image:</label>
+                        <input type="file" id="product-image" name="product-image" >
+                    </div>
+    
+                    <button type="submit">Add Product</button>
+                </fieldset>
+                </form>
+            </div>
+        </main>
+    
+    
+       
+        <footer>
+            <div id="footer">
+          <div class="contact-info">
+            <p>Contact Info</p>
+            <div class="info">
+              <span class="icon"><img src="images/social-media.png" alt="social-media " width=30 height=30 > TechX_sa</span> 
+              <span class="icon"><img src="images/email.png" alt="email " width=30 height=30>TechX@gmail.com</span> 
+              <span class="icon"><img src="images/icon-phone.png" alt="phone" width=30 height=30>+966508706553</span> 
+            </div>
+          </div>
+        
+          <div class="copyright">
+            &copy; 2024 TechX. All rights reserved
+          </div>
+        </div>  
+        </footer> 
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.querySelector("form");
+        
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+        
+                // Get form values
+                const name = document.getElementById("product-name").value.trim();
+                const category = document.getElementById("category").value;
+                const price = document.getElementById("price").value.trim();
+                const quantity = document.getElementById("quantity").value.trim();
+                const description = document.getElementById("description").value.trim();
+                const imageFile = document.getElementById("product-image").files[0];
+        
+                // Validation
+        
+                // Check if the name starts with a number
+                if (!name || /^\d/.test(name)) {
+                    alert("Product name must not start with a number and cannot be empty.");
+                    return;
+                }
+        
+                // Check if category is selected
+                if (!category) {
+                    alert("Please select a category.");
+                    return;
+                }
+        
+                // Validate price (must be a positive number)
+                if (!price || isNaN(price) || parseFloat(price) <= 0) {
+                    alert("Please enter a valid price greater than 0.");
+                    return;
+                }
+        
+                // Validate quantity (must be a positive integer)
+                if (!quantity || isNaN(quantity) || !Number.isInteger(parseFloat(quantity)) || parseInt(quantity) <= 0) {
+                    alert("Please enter a valid quantity greater than 0.");
+                    return;
+                }
+        
+                // Check if description is provided
+                if (!description) {
+                    alert("Please enter a product description.");
+                    return;
+                }
+        
+                // Validate if an image is uploaded
+                if (!imageFile) {
+                    alert("Please upload a product image.");
+                    return;
+                }
+        
+                // Convert image file to Base64
+                const image = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.readAsDataURL(imageFile);
+                });
+        
+                // Create new product object
+                const newProduct = {
+                    name,
+                    category,
+                    price: parseFloat(price),
+                    stock: parseInt(quantity),
+                    description,
+                    image,
+                };
+        
+                // Retrieve existing products from localStorage
+                const products = JSON.parse(localStorage.getItem("products")) || [];
+                products.push(newProduct); // Add new product to the list
+        
+                // Save back to localStorage
+                localStorage.setItem("products", JSON.stringify(products));
+        
+                // Success message
+                alert(`Product "${name}" added successfully!`);
+        
+                // Reset the form
+                form.reset();
+            });
+        });
+        </script>
+        
+
+</body>
+</html>

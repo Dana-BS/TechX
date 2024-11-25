@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Evaluation</title>
+    <link rel="stylesheet" href="HeaderFooter.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h3 {
+            font-weight: 500;
+        }
+
+        .product-evaluation {
+            padding: 1.25em; /* 20px */
+        }
+
+        .product-evaluation h1 {
+            margin-bottom: 1.25em; /* 20px */
+        }
+
+        .order-info {
+            display: flex;
+            align-items: center;
+            gap: 1em; /* Adjusted spacing between elements */
+            margin-bottom: 1.25em; /* 20px */
+            text-align: left; /* Align items to the left */
+        }
+
+        .order-info label {
+            margin-right: 0.5em; /* Reduced space between label and dropdown */
+			padding-left:800px;
+        }
+
+        .order-info select {
+            padding: 0.3125em; /* 5px */
+            margin: 0; /* Removed unnecessary margins */
+        }
+
+        .total-price {
+            font-weight: 500;
+        }
+
+        .orderNo, .total {
+            font-weight: 600;
+        }
+
+        .item-review {
+            margin-bottom: 1.25em; /* 20px */
+        }
+
+        .item-review h2 {
+            margin-bottom: 0.625em; /* 10px */
+        }
+
+        .item-details {
+            display: flex;
+            align-items: center;
+            gap: 0.9375em; /* 15px */
+            margin-bottom: 0.625em; /* 10px */
+        }
+
+        .item-details img {
+            width: 3.125em; /* 50px */
+            height: 3.125em; /* 50px */
+            background-color: #ddd;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.625em; /* 10px */
+            border: 1px solid #ddd;
+            margin-bottom: 1.25em; /* 20px */
+            border-radius: 0.25em; /* 4px */
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.25em; /* 20px */
+        }
+
+        .submit-btn {
+            background-color: #73a1b2;
+            color: whitesmoke;
+            padding: 0.625em 1.25em; /* 10px 20px */
+            border: none;
+            cursor: pointer;
+            margin-top: 0.0625em; /* 1px */
+            font-size: 0.8125em; /* 13px */
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+        }
+
+        .rating input[type="radio"] {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 1.5em; /* 24px */
+            color: #666; 
+            cursor: pointer; 
+            transition: color 0.3s; 
+        }
+
+        .rating input[type="radio"]:checked ~ label {
+            color: #f5b301; 
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #f5b301; 
+        }
+
+        .rating input[type="radio"]:checked + label {
+            color: #f5b301; 
+        }
+
+        p {
+            display: inline-block;
+            margin-left: 0.625em; /* 10px */
+        }
+    </style>
+</head>
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        const orderSelect = document.getElementById("order-select");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); 
+
+            const selectedOrder = orderSelect.value;
+            if (!selectedOrder) {
+                alert("Please select an order.");
+                return;
+            }
+
+            
+            const items = [
+                { id: "macbook", name: "MacBook Pro", number: 1 },
+                { id: "iphone", name: "iPhone 15 Pro", number: 2 },
+            ];
+
+            
+            let feedbackMessage = "Thank you for your feedback!\n";
+            for (let item of items) {
+                const ratingInput = document.querySelector(`input[name="rating-${item.id}"]:checked`);
+                if (!ratingInput) {
+                    alert(`Please select a rating for ${item.name}.`);
+                    return;
+                }
+             
+                feedbackMessage += `Your rating for product #${item.number} (${item.name}) is ${ratingInput.value}.\n`;
+            }
+
+           
+            alert(feedbackMessage);
+
+            
+            window.location.href = "home.html";
+        });
+    });
+</script>
+
+
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/TechX-2.png" alt="TechX website logo" style="width:500px;">
+            </div>
+            <div id='nav-bar'>
+                <a href="mobiles.html">
+                    <img src="images/iphoneicon.png" alt="Mobiles" width="20" height="20"> Mobiles
+                </a>
+                <a href="laptops.html">
+                    <img src="images/laptopicon.png" alt="Laptops" width="20" height="20"> Laptops
+                </a>
+                <a href="GamingAccessories.html">
+                    <img src="images/keyboardicon.png" alt="Gaming Accessories" width="20" height="20"> Gaming Accessories
+                </a>
+                <a href="userPage.html">
+                    <img src="images/user.png" alt="User Page" width="20" height="20"> User Page
+                </a>
+                <a href="sellerdashboard.html">
+                    <img src="images/dashboard.png" alt="Seller Dashboard" width="20" height="20"> Seller Dashboard
+                </a>
+                <a href="cart.html">
+                    <img src="images/yourcart.png" alt="Cart" width="20" height="20"> Cart
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumb" style="padding-left: 50px;">
+            <p><a href="home.html">Home</a> → <a href="userPage.html">User Page</a> → <a href="review.html">Product Evaluation</a></p>
+        </div>
+
+        <form action="submit-feedback.php" method="POST">
+            <section class="product-evaluation">
+                <h1>Product Evaluation</h1>
+
+                <div class="order-info">
+                    <p class="orderNo">Order #45456</p>
+                    <p class="total-price"><span class="total">Total:</span> $7300</p>
+                    <label for="order-select">Select order</label>
+                    <select id="order-select" name="order-id" aria-label="Select order">
+                        <option value=""  >Select order</option>
+                        <option value="45456" >Order #45456</option>
+                        
+					
+                    </select>
+                </div>
+
+                <div class="item-review">
+                    <h2>Item 1</h2>
+                    <div class="item-details">
+                        <img src="images/promac.jpg" alt="Apple 14 Inch MacBook Pro">
+                        <h3>Apple MacBook Pro 16 M3 Max Retina XDR Laptop</h3>
+                        <div class="rating" aria-label="Rating for Apple 14 Inch MacBook Pro">
+                            <input type="radio" id="star5-i1" name="rating-macbook" value="5">
+                            <label for="star5-i1">★</label>
+                            <input type="radio" id="star4-i1" name="rating-macbook" value="4">
+                            <label for="star4-i1">★</label>
+                            <input type="radio" id="star3-i1" name="rating-macbook" value="3">
+                            <label for="star3-i1">★</label>
+                            <input type="radio" id="star2-i1" name="rating-macbook" value="2">
+                            <label for="star2-i1">★</label>
+                            <input type="radio" id="star1-i1" name="rating-macbook" value="1">
+                            <label for="star1-i1">★</label>
+                        </div>
+                    </div>
+                    <label for="feedback-macbook">Feedback for Apple 14 Inch MacBook Pro</label>
+                    <textarea id="feedback-macbook" name="feedback-macbook" placeholder="Write your feedback..." rows="6" required aria-label="Feedback for Apple 14 Inch MacBook Pro"></textarea>
+                </div>
+
+                <div class="item-review">
+                    <h2>Item 2</h2>
+                    <div class="item-details">
+                        <img src="images/iphone15.jpg" alt="iPhone 15 Pro">
+                        <h3>iPhone 15 Pro</h3>
+                        <div class="rating" aria-label="Rating for iPhone 15 Pro">
+                            <input type="radio" id="star5-i2" name="rating-iphone" value="5">
+                            <label for="star5-i2">★</label>
+                            <input type="radio" id="star4-i2" name="rating-iphone" value="4">
+                            <label for="star4-i2">★</label>
+                            <input type="radio" id="star3-i2" name="rating-iphone" value="3">
+                            <label for="star3-i2">★</label>
+                            <input type="radio" id="star2-i2" name="rating-iphone" value="2">
+                            <label for="star2-i2">★</label>
+                            <input type="radio" id="star1-i2" name="rating-iphone" value="1">
+                            <label for="star1-i2">★</label>
+                        </div>
+                    </div>
+                    <label for="feedback-iphone">Feedback for iPhone 15 Pro</label>
+                    <textarea id="feedback-iphone" name="feedback-iphone" placeholder="Write your feedback..." rows="6" required aria-label="Feedback for iPhone 15 Pro"></textarea>
+                </div>
+
+                <div class="center">
+                    <button class="submit-btn" type="submit" aria-label="Submit your feedback">Submit</button>
+                </div>
+            </section>
+        </form>
+    </main>
+
+    <footer>
+        <div id="footer">
+            <div class="contact-info">
+                <p>Contact Info</p>
+                <div class="info">
+                    <span class="icon">
+                        <img src="images/social-media.png" alt="TechX social media" width="30" height="30"> TechX_sa
+                    </span>
+                    <span class="icon">
+                        <img src="images/email.png" alt="TechX email" width="30" height="30"> TechX@gmail.com
+                    </span>
+                    <span class="icon">
+                        <img src="images/icon-phone.png" alt="TechX phone" width="30" height="30"> +966508706553
+                    </span>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 TechX. All rights reserved
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

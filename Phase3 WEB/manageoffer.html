@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard-manage offer</title>
+    <link rel="stylesheet" href="headerFooter.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 1.25em 0; /* 20px */
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    main {
+        display: flex;
+        padding: 0;
+    }
+
+    .sidebar {
+        background-color: #8fb8c4;
+        width: 25%;
+        padding: 0; 
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border-right: 0.0625em solid #aeadad; /* 1px */
+    }
+
+    .sidebar .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        padding: 0.625em; /* 10px */
+        background-color: #8fb8c4;
+        border: 0.0625em solid #000; 
+        border-left: none; 
+        border-right: none;
+        border-top: none; 
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar .user-info img {
+        border-radius: 50%;
+        width: 3.125em; /* 50px */
+        height: 3.125em; /* 50px */
+        margin-right: 0.9375em; /* 15px */
+    }
+
+    #account {
+        font-weight: bold;
+        line-height: 0%;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: black;
+        padding: 1.25em; /* 20px */
+        margin: 0; 
+        display: block;
+        background-color: #8fb8c4;
+        border: 0.0625em solid #000; 
+        border-left: none; 
+        border-right: none; 
+        border-top: none; 
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar a:last-child {
+        border-bottom: 0.0625em solid #000; /* 1px */
+    }
+
+    .sidebar a.active { 
+        background-color: #809ea7;
+        font-weight: bold;
+    }
+
+    .managecontent {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .make-offer-form, .delete-offer-section {
+        width: 100%;
+        margin-bottom: 1.25em; /* 20px */
+    }
+
+    .make-offer-form {
+        width: 80%;
+        margin: 3.125em; /* 50px */
+        background-color: #fff;
+        padding: 1.25em; /* 20px */
+        box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1); /* 10px */
+    }
+
+    .make-offer-form label {
+        font-weight: bold;
+    }
+
+    .make-offer-form input, .make-offer-form select {
+        width: 30%;
+        padding: 0.625em; /* 10px */
+        margin-bottom: 1.25em; /* 20px */
+        border: 0.0625em solid #ccc; /* 1px */
+        background-color: rgb(236, 236, 236);
+        border-radius: 0.3125em; /* 5px */
+    }
+
+    #product-image {
+        display: block;
+        width: fit-content;
+    }
+
+    .imgupload {
+        display: block;
+        border: 0.0625em solid #000; /* 1px */
+        width: 50%;
+        padding: 0.625em; /* 10px */
+        margin-bottom: 0.625em; /* 10px */
+    }
+
+    .make-offer-form button {
+        padding: 0.625em 1.25em; /* 10px 20px */
+        background-color: #4CAF50;
+        color: white;
+        font-size: 0.9375em; /* 15px */
+        font-weight: bold;
+        border: none;
+        border-radius: 0.3125em; /* 5px */
+        cursor: pointer;
+        float: right;
+        width: 9.375em; /* 150px */
+        height: 3.125em; /* 50px */
+    }
+
+    .make-offer-form button:hover {
+        background-color: #45a049;
+    }
+
+    .delete-offer-section {
+        width: 80%;
+        margin: 3.125em; /* 50px */
+        background-color: #fff;
+        padding: 1.25em; /* 20px */
+        box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1); /* 10px */
+    }
+
+    .delete-offer-section fieldset {
+        height: fit-content; /* 350px */
+    }
+
+    .offer-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.25em; /* 20px */
+        box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.1); /* 10px */
+        width: 50%;
+    }
+
+    .offer-item input[type="checkbox"] {
+        margin-left: 0.625em; /* 10px */
+    }
+
+    .discount {
+        display: flex;
+        align-items: center;
+        padding: 0.3125em 0.625em; /* 5px 10px */
+        border-radius: 0.3125em; /* 5px */
+        margin-left: 0.625em; /* 10px */
+    }
+
+    .discount-rate {
+        display: inline-block;
+        padding: 0.3125em; /* 5px */
+        border: 0.0625em solid #000; /* 1px */
+        border-radius: 0.3125em; /* 5px */
+        background-color: rgb(237, 234, 234);
+        width: fit-content;
+        text-align: right;
+        margin-right: 0.3125em; /* 5px */
+    }
+
+    .percentage {
+        margin-left: 0.3125em; /* 5px */
+    }
+
+    button {
+        padding: 0.625em 1.25em; /* 10px 20px */
+        margin-top: 1.25em; /* 20px */
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 0.3125em; /* 5px */
+        cursor: pointer;
+        float: right;
+        width: 9.375em; /* 150px */
+        height: 3.125em; /* 50px */
+    }
+
+    button:hover {
+        background-color: red;
+    }
+</style>
+    
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Offer data structure
+        let offers = [
+            { id: "offer1", name: "40% OFF on Apple Laptops", discount: 40, category: "Laptops", image: "images/macbook.avif" },
+            { id: "offer2", name: "20% OFF on iPhone 15 Pro", discount: 20, category: "Mobiles", image: "images/iphone15.jpg" },
+            { id: "offer3", name: "30% OFF on Huawei Phone", discount: 30, category: "Mobiles", image: "images/huawei-mobile-phones.png" }
+        ];
+    
+        const addOfferForm = document.querySelector(".make-offer-form form");
+    
+        addOfferForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+    
+            // Retrieve form values
+            const offerName = document.getElementById("offer-name").value.trim();
+            const category = document.getElementById("category").value;
+            const startDate = document.getElementById("start-date").value;
+            const endDate = document.getElementById("end-date").value;
+            const discount = document.getElementById("discount").value.trim();
+            const productImage = document.getElementById("product-image").files[0];
+    
+            // Validation
+            const errors = [];
+            if (!offerName) {
+                errors.push("Offer name cannot be empty.");
+            }
+            if (/^\d/.test(offerName)) {
+                errors.push("Offer name cannot start with a number.");
+            }
+            if (!category) {
+                errors.push("Category must be selected.");
+            }
+            if (!startDate) {
+                errors.push("Start date is required.");
+            }
+            if (!endDate) {
+                errors.push("End date is required.");
+            }
+            if (!discount || isNaN(discount) || discount <= 0 || discount > 100) {
+                errors.push("Discount must be a number between 1 and 100.");
+            }
+            if (!productImage) {
+                errors.push("A product image must be uploaded.");
+            }
+    
+            // If there are errors, display them and stop submission
+            if (errors.length > 0) {
+                alert("Please fix the following errors:\n\n" + errors.join("\n"));
+                return;
+            }
+    
+            // Add new offer to the list
+            const newOffer = {
+                id: `offer${offers.length + 1}`,
+                name: offerName,
+                discount: parseInt(discount, 10),
+                category,
+                image: URL.createObjectURL(productImage),
+            };
+            offers.push(newOffer);
+    
+            // Add the new offer to the DOM
+            const offerList = document.querySelector(".offer-list");
+            const newOfferElement = document.createElement("div");
+            newOfferElement.className = "offer-item";
+            newOfferElement.innerHTML = `
+                <img src="${newOffer.image}" alt="${newOffer.name}" width="80">
+                <span>${newOffer.name}</span>
+                <div class="discount">
+                    <div class="discount-rate">${newOffer.discount}</div>
+                    <div class="percentage">%</div>
+                </div>
+                <input type="checkbox" name="offersToDelete[]" value="${newOffer.id}">
+            `;
+            offerList.appendChild(newOfferElement);
+    
+            // Reset form and alert success
+            addOfferForm.reset();
+            alert("New offer added successfully!");
+        });
+    
+        const deleteButton = document.getElementById("delete-selected-offers");
+        deleteButton.addEventListener("click", (event) => {
+            event.preventDefault();
+    
+            const selectedOffers = document.querySelectorAll("input[name='offersToDelete[]']:checked");
+            if (selectedOffers.length === 0) {
+                alert("Please select at least one offer to delete.");
+                return;
+            }
+    
+            if (confirm("Are you sure you want to delete the selected offers?")) {
+                selectedOffers.forEach((checkbox) => {
+                    const offerId = checkbox.value;
+                    offers = offers.filter((offer) => offer.id !== offerId);
+                    checkbox.closest(".offer-item").remove();
+                });
+                alert("Selected offers have been deleted.");
+            }
+        });
+    });
+    </script>
+    
+
+<body>
+
+    <header>
+        <div class="header" >
+        
+            <div class="logo" >
+                <img src="images/TechX-2.png" alt="website logo" style="width:500px; ">
+            </div>
+           <div id='nav-bar'>
+        <a href="mobiles.html">
+            <img src="images/iphoneicon.png" alt="Mobiles " width="20" height="20"> Mobiles
+        </a>
+        <a href="laptops.html">
+            <img src="images/laptopicon.png" alt="Laptops " width="20" height="20"> Laptops
+        </a>
+        <a href="GamingAccessories.html">
+            <img src="images/keyboardicon.png" alt="Gaming Accessories " width="20" height="20"> Gaming Accessories
+        </a>
+        <a href="userPage.html">
+            <img src="images/user.png" alt="User Page " width="20" height="20"> User Page
+        </a>
+        <a href="sellerdashboard.html">
+            <img src="images/dashboard.png" alt="Seller Dashboard" width="20" height="20"> Seller Dashboard
+        </a>
+        <a href="cart.html">
+            <img src="images/yourcart.png" alt="Cart" width="20" height="20"> Cart
+        </a>
+    </div>
+    
+        </div>
+    </header>
+    
+    
+    <div class="container">
+        <!-- Breadcrumb Section -->
+        <div class="breadcrumb">
+            <a href="home.html">Home</a> → <a href="sellerdashboard.html">Seller Dashboard</a>  → <a href="manageoffer.html">Manage Offer</a> 
+        </div>
+
+ 
+    
+        <main>
+            <div class="sidebar">
+                <div class="user-info">
+                    <img src="images/user.png" alt="Seller Profile">
+                    <div>
+                        <p id="account">Seller account</p>
+                        <p>myaccount@gmail.com</p>
+                    </div>
+                </div>
+                <a href="addnewproduct.html" >Add New Product</a>
+                <a href="manageoffer.html" class="active">Manage Offer</a>
+            </div>
+
+            <div class="managecontent" >
+
+            <div class="make-offer-form">
+                
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    
+                    <fieldset>
+                        <legend>Make offer</legend>
+                        <div>
+                            <label>Offer name:</label>
+                             <input type="text" id="offer-name" name="offer-name" placeholder="Enter offer name..." >
+                        </div>
+
+                        <div>
+                            <label for="category">Category:</label>
+                            <select id="category" name="category">
+                                <option value="Category1">Mobiles</option>
+                                <option value="Category2">Laptops</option>
+                                <option value="Category3"> Gaming Accessories</option>
+                            </select>
+                        </div>       
+                        
+                    <div>
+                        <label for="start-date">Start date:</label>
+                        <input type="date" id="start-date" name="start-date"  >
+                    </div>
+
+                    <div>
+                        <label for="end-date">End date:</label>
+                        <input type="date" id="end-date" name="end-date"  >
+                    </div>
+
+                    
+                    <div>
+                        <label for="discount">Discount rate:</label>
+                        <input type="number" id="discount" name="discount" placeholder="00%" min=0 max=100 >
+                    </div>    
+                    
+                    
+                    <div class="imgupload">
+                        <label for="product-image">Product image:</label>
+                        <input type="file" id="product-image" name="product-image" >
+                    </div>
+    
+                    <button type="submit">Add Offer</button>
+                </fieldset>
+                </form>
+            </div>
+
+            <div class="delete-offer-section">
+                <form action="#" method="POST" id="delete-offer-form">
+                    <fieldset>
+                        <legend>Delete Offer</legend>
+            
+                        
+                        <div class="offer-list">
+                      
+                            <div class="offer-item">
+                                <img src="images/macbook.avif" alt="Offer 1" width="80">
+                                <span>40% OFF on Apple Laptops</span>
+                                <div class="discount">
+                                    <div class="discount-rate">40</div>
+                                    <div class="percentage">%</div>
+                                </div>
+                                <input type="checkbox" name="offersToDelete[]" value="offer1">
+                            </div>
+            
+                            
+                            <div class="offer-item">
+                                <img src="images/iphone15.jpg" alt="Offer 2" width="80">
+                                <span>20% on IPhone 15 Pro</span>
+                                <div class="discount">
+                                    <div class="discount-rate">20</div>
+                                    <div class="percentage">%</div>
+                                </div>
+                                <input type="checkbox" name="offersToDelete[]" value="offer2"> 
+                            </div>
+
+                            <div class="offer-item">
+                                <img src="images/huawei-mobile-phones.png" alt="Offer 3" width="80">
+                                <span>30% on Huawei Phone</span>
+                                <div class="discount">
+                                    <div class="discount-rate">30</div>
+                                    <div class="percentage">%</div>
+                                </div>
+                                <input type="checkbox" name="offersToDelete[]" value="offer2"> 
+                            </div>
+            
+                           
+                        </div>
+                        <button type="submit" id="delete-selected-offers">Delete Selected Offers</button>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+            
+        </main>
+    
+    
+        <!-- Footer -->
+        <footer>
+            <div id="footer">
+          <div class="contact-info">
+            <p>Contact Info</p>
+            <div class="info">
+              <span class="icon"><img src="images/social-media.png" alt="social-media " width=30 height=30 > TechX_sa</span> 
+              <span class="icon"><img src="images/email.png" alt="email " width=30 height=30>TechX@gmail.com</span> 
+              <span class="icon"><img src="images/icon-phone.png" alt="phone" width=30 height=30>+966508706553</span> 
+            </div>
+          </div>
+        
+          <div class="copyright">
+            &copy; 2024 TechX. All rights reserved
+          </div>
+        </div>  
+        </footer> 
+    </div>
+</body>
+</html>
